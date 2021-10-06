@@ -1,40 +1,39 @@
-[![Open in Visual Studio Code](https://classroom.github.com/assets/open-in-vscode-f059dc9a6f8d3a56e377f745f24479a46679e63a5d9fe6f495e02850cd0d8118.svg)](https://classroom.github.com/online_ide?assignment_repo_id=5758462&assignment_repo_type=AssignmentRepo)
-# W03
+## 1、对代码工作原理的理解
 
-下图中有一些泡泡
+文件编码方面，代码将.java文件的字节码整合一些关键信息，如文件名称长度、文件名、文件大小等，构成一个字节码数组。再将该字节码数组依次取两个比特，作为int型的0\~7，8\~15，16\~23位，而其24\~31位全1，构建一个int型数组编码进图片中。
 
-![](https://raw.githubusercontent.com/jwork-2021/jw03/main/example/resources/bubble.jpeg)
+文件解码方面，与编码步骤相反，将图片内的int型数组，按与编码相反的方式，逐个提取两个比特构成原先的字节码数组，根据关键信息获取需要的类文件。
 
 
-下图中也有一些泡泡
 
-![](https://raw.githubusercontent.com/jwork-2021/jw03/main/example.BubbleSorter.png)
+## 2、快排和选择排序法的隐写术图
 
-这两张图你看得出区别么？你应该是看不出来的。但其实两张图并不一样，后者为一张“隐写术图”（[Steganography](https://zh.wikipedia.org/zh/隐写术))。
+**快排**
 
-我将一个实现冒泡排序的BubbleSorter类的字节码编码进了第一张泡泡图片中，得到了第二张图。为了方便起见，图片被放置在`"https://cdn.njuics.cn/example.BubbleSorter.png`这个地方。
+![快速排序](http://m.qpic.cn/psc?/V52oXK4R3Wfdoc23ThPf0o9ZD71iqRbp/45NBuzDIW489QBoVep5mcZ7knjuwgZns25s.GtYrdBilAAiNgIYWGrB5l*Ruebpxc4vfX6LG28cKQ7.K*dfWlkxuovctBE19G6NJg5EcL.U!/b&bo=hAP.AQAAAAADN2o!&rf=viewer_4)
 
-然后`W02`中的`Scene.main()`中的代码即可进行改写：
+**选择排序**
 
-```java
-...
-    Geezer theGeezer = Geezer.getTheGeezer();
+![选择排序](http://m.qpic.cn/psc?/V52oXK4R3Wfdoc23ThPf0o9ZD71iqRbp/45NBuzDIW489QBoVep5mcfbJ0cGI1sqUdOuGGndbFcsBJbr7hu1HzxsJJCyW8MA*xKM4ve20qgRnKkbb9.gAGWmGpLCS8fdD8sXklO60UI8!/b&bo=hAP.AQAAAAADN2o!&rf=viewer_4)
 
-    SteganographyClassLoader loader = new SteganographyClassLoader(
-            new URL("https://cdn.njuics.cn/example.BubbleSorter.png"));
 
-    Class c = loader.loadClass("example.BubbleSorter");
 
-    Sorter sorter = (Sorter) c.newInstance();
+## 3、排序结果
 
-    theGeezer.setSorter(sorter);
-...
-```
+**选择排序结果**
 
-请尝试运行example（注意`lib`目录下存在一个jar文件，需要被包含在工程的classpath中）仔细阅读example中的代码，理解其含义，撰写一个markdown文件，完成以下任务：
+[![](https://asciinema.org/a/ZiHIuIsH5ot8Gt5zegYHJ5fBp.svg)](https://asciinema.org/a/ZiHIuIsH5ot8Gt5zegYHJ5fBp)
 
-1. 写下对代码工作原理的理解；
-2. 将自己在`W02`中实现的两个排序算法（冒泡排序除外）分别编码进自选图片得到隐写术图，在markdown中给出两个图片的URL；
-3. 用你的图片给`W02`中example的老头赋予排序能力，得到排序结果（动画），上传动画到asciinema，在markdown中给出两个动画的链接。
-4. 联系另一位同学，用他的图片给`W02`中example的老头赋予排序能力，在markdown中记录你用的谁的图片，得到结果是否正确。
+**快速排序结果**
+
+[![](https://asciinema.org/a/ZiHIuIsH5ot8Gt5zegYHJ5fBp.svg)](https://asciinema.org/a/ZiHIuIsH5ot8Gt5zegYHJ5fBp)
+
+
+
+## 4、验证同学的隐写术图
+**使用蒋梓栩同学的图片进行排序，结果正确**
+
+**选择排序隐写术图**
+
+![](http://m.qpic.cn/psc?/V52oXK4R3Wfdoc23ThPf0o9ZD71iqRbp/45NBuzDIW489QBoVep5mcaPwuhz2MafmxSXOhobd5H0MgxiurjQhuEZ.rdDcalciZh3PerASoXyt8eltuB6ZLCh6wtoUmcwOt3erKfr6FT0!/b&bo=yQVUAwAAAAADZ9k!&rf=viewer_4)
 
